@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Source for icon.png. Render it as a 256x256 PNG with a transparent background,
+     for example a headless Chrome screenshot of this file at window size 256,256. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1a3c"/>
+      <stop offset="1" stop-color="#050a1a"/>
+    </linearGradient>
+    <radialGradient id="tint" cx="0.5" cy="0.48" r="0.55">
+      <stop offset="0" stop-color="#ffa62b" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffa62b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="node">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#ffe0a6"/>
+      <stop offset="1" stop-color="#ffa62b"/>
+    </radialGradient>
+    <radialGradient id="halo">
+      <stop offset="0.4" stop-color="#ffa62b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffa62b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="52" fill="url(#bg)"/>
+  <rect width="256" height="256" rx="52" fill="url(#tint)"/>
+  <rect x="1" y="1" width="254" height="254" rx="51" fill="none" stroke="#ffe0a6" stroke-opacity="0.10" stroke-width="2"/>
+  <g filter="url(#soft)">
+    <g fill="none" stroke="#ffa62b" stroke-opacity="0.45" stroke-width="1.6" stroke-linecap="round">
+      <path d="M30 70 Q60 40 104 34"/>
+      <path d="M226 60 Q214 96 222 140"/>
+      <path d="M118 230 Q150 214 196 226"/>
+    </g>
+    <g fill="#ffe0a6">
+      <circle cx="30" cy="70" r="3.5"/>
+      <circle cx="104" cy="34" r="3"/>
+      <circle cx="226" cy="60" r="3.5"/>
+      <circle cx="222" cy="140" r="3"/>
+      <circle cx="118" cy="230" r="3"/>
+      <circle cx="196" cy="226" r="3.5"/>
+    </g>
+  </g>
+  <g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M66 108 L190 108 L200 198 L56 198 Z" stroke="#ffa62b" stroke-width="11"/>
+    <path d="M98 108 V92 a30 30 0 0 1 60 0 V108" stroke="#ffa62b" stroke-width="11"/>
+
+    <path d="M66 108 L190 108 L200 198 L56 198 Z" stroke="#ffe0a6" stroke-width="4"/>
+    <path d="M98 108 V92 a30 30 0 0 1 60 0 V108" stroke="#ffe0a6" stroke-width="4"/>
+
+  </g>
+  <g>
+    <circle cx="98" cy="108" r="14" fill="url(#halo)"/><circle cx="98" cy="108" r="9" fill="url(#node)"/>
+    <circle cx="158" cy="108" r="14" fill="url(#halo)"/><circle cx="158" cy="108" r="9" fill="url(#node)"/>
+    <circle cx="66" cy="108" r="18" fill="url(#halo)"/><circle cx="66" cy="108" r="13" fill="url(#node)"/>
+    <circle cx="190" cy="108" r="18" fill="url(#halo)"/><circle cx="190" cy="108" r="13" fill="url(#node)"/>
+    <circle cx="200" cy="198" r="18" fill="url(#halo)"/><circle cx="200" cy="198" r="13" fill="url(#node)"/>
+    <circle cx="56" cy="198" r="18" fill="url(#halo)"/><circle cx="56" cy="198" r="13" fill="url(#node)"/>
+  </g>
+</svg>

@@ -1,0 +1,123 @@
+{
+  "name": "webjaguar-mcp",
+  "displayName": "MCP Server for WebJaguar",
+  "description": "Model Context Protocol server for the WebJaguar e-commerce REST API: products, inventory, categories, orders, customers and sales reps, with optional archived and verified product updates.",
+  "version": "0.1.0",
+  "publisher": "pinoyitsolution",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0b1a3c",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.101.0",
+    "node": ">=18.17"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "webjaguar",
+    "ecommerce",
+    "copilot",
+    "agent"
+  ],
+  "main": "./dist/extension.js",
+  "bin": {
+    "webjaguar-mcp": "dist/server.js"
+  },
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "webjaguarMcp.servers",
+        "label": "WebJaguar"
+      }
+    ],
+    "commands": [
+      {
+        "command": "webjaguarMcp.configure",
+        "title": "Add or Edit Profile",
+        "category": "WebJaguar MCP"
+      },
+      {
+        "command": "webjaguarMcp.clearCredentials",
+        "title": "Clear Stored Credentials",
+        "category": "WebJaguar MCP"
+      }
+    ],
+    "configuration": {
+      "title": "WebJaguar MCP",
+      "properties": {
+        "webjaguarMcp.profiles": {
+          "type": "array",
+          "scope": "application",
+          "default": [],
+          "markdownDescription": "One MCP server is registered per profile (for example `test` and `live`). Credentials are kept in VS Code Secret Storage, never in settings. Use **WebJaguar MCP: Add or Edit Profile** to create one.",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "baseUrl"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,32}$",
+                "description": "Short profile name, e.g. test or live."
+              },
+              "baseUrl": {
+                "type": "string",
+                "pattern": "^https://[^/\\s]+/?$",
+                "description": "Store root URL, e.g. https://www.example.com."
+              },
+              "environmentLabel": {
+                "type": "string",
+                "description": "Label shown in every write preview, e.g. test or live."
+              },
+              "extraWritableFields": {
+                "type": "string",
+                "description": "Comma-separated product fields you confirmed persist on your store, in addition to the built-in list."
+              },
+              "allowWrites": {
+                "type": "boolean",
+                "default": false,
+                "description": "Enable the product update and restore tools."
+              }
+            }
+          }
+        },
+        "webjaguarMcp.nodePath": {
+          "type": "string",
+          "scope": "machine",
+          "default": "",
+          "description": "Node.js executable used to run the server. Leave empty to use the runtime bundled with VS Code."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc -p . --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test out/test/",
+    "nda-check": "node scripts/nda-check.mjs --strict",
+    "vscode:prepublish": "npm run nda-check && npm run typecheck && node esbuild.mjs --production",
+    "package": "vsce package --no-dependencies --allow-missing-repository"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@types/vscode": "~1.101.0",
+    "@vscode/vsce": "^3.7.0",
+    "esbuild": "^0.25.10",
+    "typescript": "~5.9.3"
+  }
+}

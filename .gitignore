@@ -1,0 +1,10 @@
+node_modules/
+dist/
+out/
+*.vsix
+.env
+.env.*
+!.env.example
+# Private list of terms that must never ship (company names, hosts, ids). Never commit it.
+.nda-denylist
+archive/

@@ -1,0 +1,10 @@
+**
+!dist/extension.js
+!dist/server.js
+!dist/THIRD_PARTY_NOTICES.txt
+!images/icon.png
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!SECURITY.md
